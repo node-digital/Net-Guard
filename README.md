@@ -8,6 +8,9 @@ A Easy Way To Manage Your Network
 - ipconfig editing
 - rate limiting 
 - ip whitelisting
+- ASN blocking
+- IP-range-blocking
+- Block Botnet Packets
 
 
 ## Setup
