@@ -1,6 +1,6 @@
 import os, sys
 import modules.ratelimit as ratelimit
-
+import modules.whitelist as whitelist
 
 
 def Clear():
@@ -23,7 +23,7 @@ def main():
         ratelimit.limit()
         pass
     elif choice == "2":
-        # Call the Rate limiting function
+        whitelist.Whitelist()
         pass
     elif choice == "3":
         # Call the ASN blocking function
@@ -39,3 +39,6 @@ def main():
         pass
     else:
         print("Invalid. Try again.")
+        
+if __name__ == "__main__":
+    main()
