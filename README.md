@@ -10,13 +10,12 @@ A Easy Way To Manage Your Network
 - ip whitelisting
 - ASN blocking
 - IP-range-blocking
-- Block Botnet Packets
+- ICMP Blocking
 
 
 ## Setup
 
 ```bash
-  sudo pip3 install -r requirements.txt
   sudo python3 main.py
 ```
     
