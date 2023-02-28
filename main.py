@@ -1,4 +1,7 @@
 import os, sys
+import modules.ratelimit as ratelimit
+
+
 
 def Clear():
     os.system("clear")
@@ -17,7 +20,7 @@ def main():
     print(banner)
     choice = input("Enter your choice: ")
     if choice == "1":
-        # Call the IP Whitelisting function
+        ratelimit.limit()
         pass
     elif choice == "2":
         # Call the Rate limiting function
@@ -32,7 +35,7 @@ def main():
         # Call the IP range blocking function
         pass
     elif choice == "6":
-        # Call the IP range blocking function
+        sys.exit()
         pass
     else:
         print("Invalid. Try again.")
