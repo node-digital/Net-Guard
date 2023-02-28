@@ -3,7 +3,7 @@ import os, sys
 def Clear():
     os.system("clear")
 
-banner = """Welcome To NetGuard - V0.2
+banner = """Welcome To NetGuard - V0.1
 1. Rate Limiting
 2. Exit"""
 
