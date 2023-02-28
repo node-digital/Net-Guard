@@ -1,7 +1,8 @@
 import os, sys
 import modules.ratelimit as ratelimit
 import modules.whitelist as whitelist
-
+import modules.asnblock as asn
+import modules.icmpblock as icmp
 
 def Clear():
     os.system("clear")
@@ -15,7 +16,7 @@ def main():
     2. IP Whitelisting
     3. ASN blocking
     4. IP-range-blocking
-    5. Block Botnet Packets
+    5. Disable ICMP
     6. Exit"""
     print(banner)
     choice = input("Enter your choice: ")
@@ -26,13 +27,13 @@ def main():
         whitelist.Whitelist()
         pass
     elif choice == "3":
-        # Call the ASN blocking function
+        asn.asnblock()
         pass
     elif choice == "4":
         # Call the IP range blocking function
         pass
     elif choice == "5":
-        # Call the IP range blocking function
+        icmp.block()
         pass
     elif choice == "6":
         sys.exit()
