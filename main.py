@@ -3,16 +3,36 @@ import os, sys
 def Clear():
     os.system("clear")
 
-banner = """Welcome To NetGuard - V0.1
-1. Rate Limiting
-2. Exit"""
 
-banner()
-choice = input("Choose An Option: ")
-
-if choice == "1":
-    import modules.ratelimit as ratelimit
-    ratelimit.ratelimit()
-
-if choice == "2":
-    sys.exit()
+def main():
+    Clear()
+    banner = """Welcome To Net-Guard
+    Please select a feature to use:
+    1. Rate Limiting
+    2. IP Whitelisting
+    3. ASN blocking
+    4. IP-range-blocking
+    5. Block Botnet Packets
+    6. Exit"""
+    print(banner)
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        # Call the IP Whitelisting function
+        pass
+    elif choice == "2":
+        # Call the Rate limiting function
+        pass
+    elif choice == "3":
+        # Call the ASN blocking function
+        pass
+    elif choice == "4":
+        # Call the IP range blocking function
+        pass
+    elif choice == "5":
+        # Call the IP range blocking function
+        pass
+    elif choice == "6":
+        # Call the IP range blocking function
+        pass
+    else:
+        print("Invalid. Try again.")
