@@ -3,6 +3,7 @@ import modules.ratelimit as ratelimit
 import modules.whitelist as whitelist
 import modules.asnblock as asn
 import modules.icmpblock as icmp
+import modules.ipforward as ipforward
 
 def Clear():
     os.system("clear")
@@ -15,7 +16,7 @@ def main():
     1. Rate Limiting
     2. IP Whitelisting
     3. ASN blocking
-    4. IP-range-blocking
+    4. IP Forwarding
     5. Disable ICMP
     6. Exit"""
     print(banner)
@@ -30,7 +31,7 @@ def main():
         asn.asnblock()
         pass
     elif choice == "4":
-        # Call the IP range blocking function
+        ipforward.forward()
         pass
     elif choice == "5":
         icmp.block()
