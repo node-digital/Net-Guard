@@ -4,7 +4,8 @@ import modules.whitelist as whitelist
 import modules.asnblock as asn
 import modules.icmpblock as icmp
 import modules.ipforward as ipforward
-
+import modules.portdrop as port
+import modules.ddosprot as ddos
 def Clear():
     os.system("clear")
 
@@ -18,7 +19,8 @@ def main():
     3. ASN blocking
     4. IP Forwarding
     5. Disable ICMP
-    6. Exit"""
+    6. Drop Not Needed Ports
+    7. Exit"""
     print(banner)
     choice = input("Enter your choice: ")
     if choice == "1":
@@ -37,6 +39,9 @@ def main():
         icmp.block()
         pass
     elif choice == "6":
+        port.drop()
+        pass
+    elif choice == "7":
         sys.exit()
         pass
     else:
