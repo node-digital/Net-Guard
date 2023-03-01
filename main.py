@@ -40,6 +40,7 @@ def main():
         pass
     else:
         print("Invalid. Try again.")
+        main()
         
 if __name__ == "__main__":
     main()
