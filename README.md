@@ -9,7 +9,7 @@ A Easy Way To Manage Your Network
 - rate limiting 
 - ip whitelisting
 - ASN blocking
-- IP-range-blocking
+- Not Needed Port Blocking
 - ICMP Blocking
 
 
