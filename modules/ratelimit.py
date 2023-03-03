@@ -1,12 +1,16 @@
 import os
 
-def limit():
-    print("Rate Limiting TCP Connections")
-    #Rate Limiting TCP
-    os.system("ufw limit 1:65535/tcp")
-    os.system("iptables -t mangle -I PREROUTING -p tcp -m conntrack --ctstate NEW -j DROP")
-    os.system("iptables -t mangle -I PREROUTING -p tcp -m conntrack --ctstate NEW -m hashlimit --hashlimit-name portlimit --hashlimit-mode srcip --hashlimit-srcmask 32 --hashlimit-upto 23/sec --hashlimit-burst 30 --hashlimit-htable-expire 60000 -j ACCEPT")
-    #Rate Limiting UDP
-    print("Rate Limiting UDP connections")
-    os.system("iptables -t mangle -I PREROUTING -p udp -m conntrack --ctstate NEW -j DROP")
-    os.system("iptables -t mangle -I PREROUTING -p udp -m conntrack --ctstate NEW -m hashlimit --hashlimit-name portlimit --hashlimit-mode srcip --hashlimit-srcmask 32 --hashlimit-upto 23/sec --hashlimit-burst 30 --hashlimit-htable-expire 60000 -j ACCEPT")
+def rate_limit(interface, rate):
+    # Define the command to rate limit UDP traffic
+    udp_command = f"sudo tc qdisc add dev {interface} root handle 1: cbq avpkt 1000 bandwidth 100Mbit"
+    udp_command += f" allot 1514 cell 8 maxburst 20 minburst 5"
+    udp_command += f" weight 10Kbit minidle 5 prio 1 maxrate {rate}Kbit"
+
+    # Define the command to rate limit TCP traffic
+    tcp_command = f"sudo tc qdisc add dev {interface} root handle 2: cbq avpkt 1000 bandwidth 100Mbit"
+    tcp_command += f" allot 1514 cell 8 maxburst 20 minburst 5"
+    tcp_command += f" weight 90Kbit minidle 5 prio 2 maxrate {rate}Kbit"
+
+    # Run the commands to rate limit UDP and TCP traffic
+    os.system(udp_command)
+    os.system(tcp_command)
